@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>hello there</title>
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/css/materialize.min.css"  media="screen,projection"/>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <style media="screen">
+  #mapWrapper {
+    height: 80vh;
+    padding: 0px
+  }
+  </style>
+</head>
+<body class="grey lighten-2">
+<div class="navbar-fixed">
+  <nav>
+    <div class="nav-wrapper blue-grey lighten-1">
+      <a href="#" class="brand-logo center">Vicinity</a>
+    </div>
+  </nav>
+
+</div>
+
+
+
+  <div class="container row" style="margin-top:20px;">
+    <div id="mapWrapperWrapper" class="col s6">
+      <div id="mapWrapper" class="card-panel hoverable">
+        <div id='map' style='height:inherit;width:inherit;'></div>
+      </div>
+      <div class="progress transparent">
+        <div id="loader" class="indeterminate"></div>
+      </div>
+    </div>
+    <div class="col s6">
+      <div class="card-panel ">
+        <div class="input-field">
+          <select id="partselect">
+            <option value="VoteDistrict">Wahlbezirke</option>
+            <option value="City">Stadt</option>
+            <option value="District">Stadtteile</option>
+            <option value="CityBlock">Stadtviertel</option>
+            <option value="BuildingBlock">Gebäudeblöcke</option>
+          </select>
+          <label>Einteilung auswählen</label>
+        </div>
+        <br />
+        <div id="dyeselectcontainer"class="input-field ">
+
+        </div>
+        <p id="colorRange"></p>
+      </div>
+      <div class="card white" style="display:none;">
+        <div class="card-content">
+          <span class="card-title">Graph zeichnen</span>
+          <div class="row">
+            <div class="col s6 input-field">
+              <select>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <label>Dataset</label>
+            </div>
+            <div class="col s6 input-field">
+              <select>
+                <option value="" disabled selected>Choose your option</option>
+                <option value="1">Option 1</option>
+                <option value="2">Option 2</option>
+                <option value="3">Option 3</option>
+              </select>
+              <label>Dependency</label>
+            </div>
+            <div class="input-field col s6">
+              <input value="" id="graphfiltertype" type="text" disabled>
+              <label for="filtertype">Filter type</label>
+            </div>
+            <div class="input-field col s4">
+              <input value="" id="graphfilterid" type="number" disabled>
+              <label for="filterid">Filter ID</label>
+            </div>
+            <div class="server">
+              <a href="javascript:void(0);" onclick="$('#graphfilterid').val('');$('#graphfiltertype').val('');M.updateTextFields();" class="btn-flat col s1"><i class="material-icons">clear</i></a>
+
+            </div>
+          </div>
+        </div>
+        <div class="card-action center ">
+          <a href="#" class="btn-flat blue-grey-text waves waves-light">Draw</a>
+        </div>
+      </div>
+      <div class="card white">
+        <div class="card-content">
+          <span class="card-title">Einwohner</span>
+          <div id="charts">
+            <canvas id="inhabitantsbyAge"></canvas>
+            <canvas id="inhabitants"></canvas>
+          </div>
+        </div>
+      </div>
+      <div class="card white">
+        <div class="card-content">
+          <span class="card-title">Informationen <span id="selected"></span></span>
+          <table id="info">
+          </table>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+  function initialize() {
+    initMap();
+  }
+  </script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-alpha.3/js/materialize.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  <script type="text/javascript" async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAJ_82h9Fr8hfgHH0gGtkiDVj1f4adMv5s&libraries=drawing&callback=initialize"></script>
+  <script type="text/javascript" src="templates/script.js"></script>
+</body>
+</html>
